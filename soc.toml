@@ -1,0 +1,9 @@
+schema_version = 2
+
+[soc]
+name = "sm8250"
+description = "Qualcomm SM8250 / kona"
+hardware_source = "IN2020 stock boot_a + dtbo_a"
+
+[components]
+include = ["ArmDTPlatform", "ArmCpu"]
