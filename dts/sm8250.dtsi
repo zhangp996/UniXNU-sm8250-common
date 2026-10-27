@@ -56,7 +56,11 @@
         ufs: ufshc@1d84000 {
             compatible = "qcom,sm8250-ufshc", "qcom,ufshc";
             unixnu,adt-name = "ufshc";
-            reg = <0 0x1d84000 0 0x3000>;
+            // Host register block and inline crypto engine, and the host interrupt,
+            // verified against a kona board's live device tree (SPI 0x109 = 265).
+            reg = <0 0x1d84000 0 0x3000>, <0 0x1d90000 0 0x8000>;
+            reg-names = "ufs_mem", "ufs_ice";
+            interrupts = <0 265 4 0>;
             status = "disabled";
         };
 
