@@ -1,0 +1,2 @@
+# SoC patches, one path per line, in application order.
+# Empty: kona needs no XNU patch that the arm64 and OS series do not carry.

@@ -2,8 +2,18 @@ schema_version = 2
 
 [soc]
 name = "sm8250"
-description = "Qualcomm SM8250 / kona"
+description = "Qualcomm SM8250 / SM8250-AC (kona): Kryo 585, Adreno 650, UFS 3.0"
+# The first commit of this repository declared the board sources as the IN2020 stock
+# boot_a and dtbo_a images. They stay the primary evidence for board facts; every
+# address below is checked against them before a driver consumes it.
 hardware_source = "IN2020 stock boot_a + dtbo_a"
+# Hardware data source. Each address in dts/sm8250.dtsi is an SM8250 platform fact
+# and is verified against the board's own device tree before a driver consumes it;
+# the device repository records that measurement.
+source_repository = "https://github.com/torvalds/linux"
+source_revision = "06090c9b622a7e1f797e775db4c035e0d779b76e"
 
 [components]
-include = ["ArmDTPlatform", "ArmCpu"]
+# Platform components every kona board needs. A board repository adds the
+# storage, display, input and GPU components its own probes support.
+include = ["ArmCpu", "ArmDTPlatform"]
